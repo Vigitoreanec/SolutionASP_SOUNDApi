@@ -1,0 +1,6 @@
+@BeatifySOUND.Web.API_HostAddress = http://localhost:5116
+
+GET {{BeatifySOUND.Web.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
