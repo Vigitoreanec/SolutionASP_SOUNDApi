@@ -13,7 +13,7 @@ public class GroupRepository(BeatifyDBContext beatifyDBContext) : IGroupReposito
     public async Task<List<Group>> GetAllAsync() =>
         await beatifyDBContext.Groups.ToListAsync();
 
-    public async Task<Group> GetById(int id) =>
+    public async Task<Group> GetByIdAsync(int id) =>
         await beatifyDBContext.Groups.SingleAsync(g => g.Id == id);
 
     public async Task AddAsync(Group group)

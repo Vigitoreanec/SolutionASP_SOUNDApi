@@ -29,6 +29,34 @@ public class SongController(IGroupRepository groupRepository) : ControllerBase
     //   return Songs;
     //}
 
-    [HttpGet(Name = "GetGroups")]
+    [HttpGet(Name = "GetAllGroups")]
     public async Task<IEnumerable<Group>> GetGroups() => await groupRepository.GetAllAsync();
+
+    [HttpGet("{id}")]
+    public async Task<Group> GetByIdAsync(int id)
+    {
+        var group = await groupRepository.GetByIdAsync(id);
+        //return proup == null ? Results.NotFound() : Results.Ok(proup);
+        return group;
+    }
+
+    [HttpPost(Name = "AddGroup")]
+    public async Task AddGroup(Group group)
+    {
+        await groupRepository.AddAsync(group);
+        
+    }
+
+    [HttpDelete(Name = "DeleteGroup")]
+    public async Task RemoveAsync(int id)
+    {
+        await groupRepository.RemoveAsync(id);
+
+    }
+    [HttpPut(Name = "UpdateGroup")]
+    public async Task UpdateAsync(int id,Group group)
+    {
+        await groupRepository.UpdateAsync(id, group);
+
+    }
 }
