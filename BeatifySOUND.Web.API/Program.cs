@@ -1,4 +1,16 @@
+using Beatify.DataBase.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+
+// получаем строку подключения из файла конфигурации
+string connection = builder.Configuration.GetConnectionString("BeatifyDBContext");
+// добавляем контекст ApplicationContext в качестве сервиса в приложение
+builder.Services.AddDbContext<BeatifyDBContext>(options =>
+    options.UseSqlServer(connection));
+
+builder.Services.AddControllersWithViews();
+
 
 builder.Services.AddControllers();
 

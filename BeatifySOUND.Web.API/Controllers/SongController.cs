@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Text.RegularExpressions;
 
 namespace BeatifySOUND.Web.API.Controllers;
 
@@ -24,5 +25,10 @@ public class SongController : ControllerBase
     public IEnumerable<string> Get()
     {
        return Songs;
+    }
+    [HttpGet(Name = "GetGroups")]
+    public IEnumerable<Group> GetGroups()
+    {
+        return null;
     }
 }

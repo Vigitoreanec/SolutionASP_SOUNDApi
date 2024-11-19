@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeatifySOUND.Web.API", "BeatifySOUND.Web.API\BeatifySOUND.Web.API.csproj", "{7D53CFAF-EA24-4129-9E03-6322110E46AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BeatifySOUND.Web.API", "BeatifySOUND.Web.API\BeatifySOUND.Web.API.csproj", "{7D53CFAF-EA24-4129-9E03-6322110E46AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Beatify.DataBase", "Beatify.DataBase\Beatify.DataBase.csproj", "{548BF5D4-3517-4AC2-A967-1B3163783717}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{7D53CFAF-EA24-4129-9E03-6322110E46AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D53CFAF-EA24-4129-9E03-6322110E46AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7D53CFAF-EA24-4129-9E03-6322110E46AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{548BF5D4-3517-4AC2-A967-1B3163783717}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{548BF5D4-3517-4AC2-A967-1B3163783717}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{548BF5D4-3517-4AC2-A967-1B3163783717}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{548BF5D4-3517-4AC2-A967-1B3163783717}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
