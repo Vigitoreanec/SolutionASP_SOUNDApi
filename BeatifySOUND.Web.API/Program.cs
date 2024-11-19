@@ -1,4 +1,6 @@
 using Beatify.DataBase.Data;
+using Beatify.DataBase.Repositories;
+using Beatify.DataBase.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,8 +13,8 @@ builder.Services.AddDbContext<BeatifyDBContext>(options =>
 
 builder.Services.AddControllersWithViews();
 
-
 builder.Services.AddControllers();
+builder.Services.AddTransient<IGroupRepository,GroupRepository>();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
