@@ -7,4 +7,7 @@ using (var client = new HttpClient())
     Console.WriteLine(content);
 }
 
+
+
+
 Console.WriteLine("Приложение завершило работу");
