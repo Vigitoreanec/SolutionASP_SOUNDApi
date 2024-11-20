@@ -1,5 +1,4 @@
-﻿
-using Beatify.DataBase.Data;
+﻿using Beatify.DataBase.Data;
 using Beatify.DataBase.Entities;
 using Beatify.DataBase.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -42,4 +41,11 @@ public class GroupRepository(BeatifyDBContext beatifyDBContext) : IGroupReposito
                 .SetProperty(g => g.Albums, group.Albums)
             );
     }
+
+    public async Task<bool> ExistsByIdAsync(int id) => 
+        await beatifyDBContext.Groups.AnyAsync(group => group.Id == id);
+
+    public async Task<bool> ExistsByTitleAsync(string title) =>
+        await beatifyDBContext.Groups.AnyAsync(group => group.Title == title);
+    
 }

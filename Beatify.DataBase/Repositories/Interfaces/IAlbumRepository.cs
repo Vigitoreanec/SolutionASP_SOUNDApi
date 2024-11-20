@@ -2,13 +2,13 @@
 
 namespace Beatify.DataBase.Repositories.Interfaces;
 
-public interface IGroupRepository
+public interface IAlbumRepository
 {
-    Task AddAsync(Group group);
-    Task<List<Group>> GetAllAsync();
-    Task<Group> GetByIdAsync(int id);
+    Task AddAsync(Album album);
+    Task<List<Album>> GetAllAsync();
+    Task<Album> GetByIdAsync(int id);
     Task RemoveAsync(int id);
-    Task UpdateAsync(int id, Group group);
+    Task UpdateAsync(int id, Album album);
     Task<bool> ExistsByIdAsync(int id);
     Task<bool> ExistsByTitleAsync(string title);
 }

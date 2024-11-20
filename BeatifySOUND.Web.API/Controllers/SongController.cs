@@ -3,6 +3,7 @@ using Beatify.DataBase.Repositories.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 
+
 namespace BeatifySOUND.Web.API.Controllers;
 
 [ApiController]
@@ -30,33 +31,71 @@ public class SongController(IGroupRepository groupRepository) : ControllerBase
     //}
 
     [HttpGet(Name = "GetAllGroups")]
-    public async Task<IEnumerable<Group>> GetGroups() => await groupRepository.GetAllAsync();
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<Group>))]
+    
+    public async Task<IActionResult> GetGroups()
+    {
+        return Ok(await groupRepository.GetAllAsync());
+    }
 
     [HttpGet("{id}")]
-    public async Task<Group> GetByIdAsync(int id)
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Group))]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> GetByIdAsync(int id)
     {
+        if(!await groupRepository.ExistsByIdAsync(id))
+        {
+            NotFound();
+        }
         var group = await groupRepository.GetByIdAsync(id);
+        return Ok(group);
         //return proup == null ? Results.NotFound() : Results.Ok(proup);
-        return group;
     }
 
     [HttpPost(Name = "AddGroup")]
-    public async Task AddGroup(Group group)
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status402PaymentRequired)]
+    public async Task<IActionResult> AddGroup(Group group)
     {
+        if (group == null)
+        {
+            BadRequest();
+        }
+        if(await groupRepository.ExistsByTitleAsync(group.Title))
+        { 
+            ModelState.AddModelError("", "Group already exists!");
+            return StatusCode(StatusCodes.Status402PaymentRequired,ModelState);
+        }
         await groupRepository.AddAsync(group);
-        
+        return Ok();
     }
+
 
     [HttpDelete(Name = "DeleteGroup")]
-    public async Task RemoveAsync(int id)
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> RemoveAsync(int id)
     {
+        if (!await groupRepository.ExistsByIdAsync(id))
+        {
+            NotFound();
+        }
         await groupRepository.RemoveAsync(id);
-
+        return Ok();
     }
-    [HttpPut(Name = "UpdateGroup")]
-    public async Task UpdateAsync(int id,Group group)
-    {
-        await groupRepository.UpdateAsync(id, group);
 
+
+    [HttpPut(Name = "UpdateGroup")]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public async Task<IActionResult> UpdateAsync(int id,Group group)
+    {
+        if (!await groupRepository.ExistsByIdAsync(id))
+        {
+            NotFound();
+        }
+        await groupRepository.UpdateAsync(id, group);
+        return Ok();
     }
 }
