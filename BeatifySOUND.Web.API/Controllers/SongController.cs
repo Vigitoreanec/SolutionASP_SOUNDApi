@@ -2,100 +2,80 @@
 using Beatify.DataBase.Repositories.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
-
-
-namespace BeatifySOUND.Web.API.Controllers;
-
-[ApiController]
-[Route("[controller]")]
-public class SongController(IGroupRepository groupRepository) : ControllerBase
+namespace BeatifySOUND.Web.API.Controllers
 {
-    //public List<string> Songs { get; set; } =
-    //    [
-    //        "1.Ludwig van Beethoven - Симфония № 9, Op. 125, Хорал",
-    //        "2.Johann Sebastian Bach - Месса си минор",
-    //        "3.Wolfgang Amadeus Mozart - Симфония № 41,  Юпитер",
-    //        "4.Frederic Chopin - Ноктюрн № 2",
-    //        "5.George Gershwin - Rhapsody in Blue",
-    //        "6.Pyotr Ilyich Tchaikovsky - Симфония № 5",
-    //        "7.Antonio Vivaldi - Четыре сезона",
-    //        "8.Igor Stravinsky - Весна священная",
-    //        "9.Giuseppe Verdi - Опера Травиата",
-    //        "10.Richard Wagner - Опера Тристан и Изольда"
-    //    ];
-
-    //[HttpGet(Name = "GetListSongs")]
-    //public IEnumerable<string> Get()
-    //{
-    //   return Songs;
-    //}
-
-    [HttpGet(Name = "GetAllGroups")]
-    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<Group>))]
-    
-    public async Task<IActionResult> GetGroups()
+    [ApiController]
+    [Route("[controller]")]
+    public class SongController(ISongRepository songRepository) : ControllerBase
     {
-        return Ok(await groupRepository.GetAllAsync());
-    }
+        [HttpGet(Name = "GetAllSongs")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<Song>))]
 
-    [HttpGet("{id}")]
-    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Group))]
-    [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> GetByIdAsync(int id)
-    {
-        if(!await groupRepository.ExistsByIdAsync(id))
+        public async Task<IActionResult> GetSongs()
         {
-            NotFound();
+            var song = await songRepository.GetAllAsync();
+            return Ok(song);
         }
-        var group = await groupRepository.GetByIdAsync(id);
-        return Ok(group);
-        //return proup == null ? Results.NotFound() : Results.Ok(proup);
-    }
 
-    [HttpPost(Name = "AddGroup")]
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    [ProducesResponseType(StatusCodes.Status402PaymentRequired)]
-    public async Task<IActionResult> AddGroup(Group group)
-    {
-        if (group == null)
+        [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Song))]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> GetByIdAsync(int id)
         {
-            BadRequest();
+            if (!await songRepository.ExistsByIdAsync(id))
+            {
+                NotFound();
+            }
+            var song = await songRepository.GetByIdAsync(id);
+            return Ok(song);
+            //return proup == null ? Results.NotFound() : Results.Ok(song);
         }
-        if(await groupRepository.ExistsByTitleAsync(group.Title))
-        { 
-            ModelState.AddModelError("", "Group already exists!");
-            return StatusCode(StatusCodes.Status402PaymentRequired,ModelState);
-        }
-        await groupRepository.AddAsync(group);
-        return Ok();
-    }
 
-
-    [HttpDelete(Name = "DeleteGroup")]
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> RemoveAsync(int id)
-    {
-        if (!await groupRepository.ExistsByIdAsync(id))
+        [HttpPost(Name = "AddSong")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status402PaymentRequired)]
+        public async Task<IActionResult> AddGroup(Song song)
         {
-            NotFound();
+            if (song == null)
+            {
+                BadRequest();
+            }
+            if (await songRepository.ExistsByTitleAsync(song.Title))
+            {
+                ModelState.AddModelError("", "Song already exists!");
+                return StatusCode(StatusCodes.Status402PaymentRequired, ModelState);
+            }
+            await songRepository.AddAsync(song);
+            return Ok();
         }
-        await groupRepository.RemoveAsync(id);
-        return Ok();
-    }
 
 
-    [HttpPut(Name = "UpdateGroup")]
-    [ProducesResponseType(StatusCodes.Status404NotFound)]
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    public async Task<IActionResult> UpdateAsync(int id,Group group)
-    {
-        if (!await groupRepository.ExistsByIdAsync(id))
+        [HttpDelete(Name = "DeleteSong")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> RemoveAsync(int id)
         {
-            NotFound();
+            if (!await songRepository.ExistsByIdAsync(id))
+            {
+                NotFound();
+            }
+            await songRepository.RemoveAsync(id);
+            return Ok();
         }
-        await groupRepository.UpdateAsync(id, group);
-        return Ok();
+
+
+        [HttpPut(Name = "UpdateSong")]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<IActionResult> UpdateAsync(int id, Song song)
+        {
+            if (!await songRepository.ExistsByIdAsync(id))
+            {
+                NotFound();
+            }
+            await songRepository.UpdateAsync(id, song);
+            return Ok();
+        }
     }
 }
