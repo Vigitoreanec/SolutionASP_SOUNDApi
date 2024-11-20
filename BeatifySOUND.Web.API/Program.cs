@@ -16,6 +16,8 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddControllers();
 builder.Services.AddTransient<IGroupRepository,GroupRepository>();
 builder.Services.AddTransient<IAlbumRepository, AlbumRepository>();
+builder.Services.AddTransient<IGenreRepository, GenreRepository>();
+builder.Services.AddTransient<ISongRepository, SongRepository>();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
