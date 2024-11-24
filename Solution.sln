@@ -9,6 +9,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Beatify.DataBase", "Beatify
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Beatify.Test.ConsoleApp", "Beatify.Test.ConsoleApp\Beatify.Test.ConsoleApp.csproj", "{EA8BB2C7-E925-40AF-B411-580D419AEA41}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Beatify.Domain", "Beatify.Domain\Beatify.Domain.csproj", "{EF8B543E-BB89-4073-A814-AD6C7A84B954}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Beautify.Application", "Beautify.Application\Beautify.Application.csproj", "{4443DB65-B9EB-46EA-B642-26EB95362078}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Beautify.PersistenceDb", "Beautify.Persistence\Beautify.PersistenceDb.csproj", "{2A18DAD6-9350-494E-8AAE-23EDA5F1499D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TESTing", "TESTing", "{B2AC7802-FF3C-43E0-ACF8-D490A6636DE8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,9 +35,24 @@ Global
 		{EA8BB2C7-E925-40AF-B411-580D419AEA41}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EA8BB2C7-E925-40AF-B411-580D419AEA41}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EA8BB2C7-E925-40AF-B411-580D419AEA41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF8B543E-BB89-4073-A814-AD6C7A84B954}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF8B543E-BB89-4073-A814-AD6C7A84B954}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF8B543E-BB89-4073-A814-AD6C7A84B954}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF8B543E-BB89-4073-A814-AD6C7A84B954}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4443DB65-B9EB-46EA-B642-26EB95362078}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4443DB65-B9EB-46EA-B642-26EB95362078}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4443DB65-B9EB-46EA-B642-26EB95362078}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4443DB65-B9EB-46EA-B642-26EB95362078}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A18DAD6-9350-494E-8AAE-23EDA5F1499D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A18DAD6-9350-494E-8AAE-23EDA5F1499D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A18DAD6-9350-494E-8AAE-23EDA5F1499D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A18DAD6-9350-494E-8AAE-23EDA5F1499D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EA8BB2C7-E925-40AF-B411-580D419AEA41} = {B2AC7802-FF3C-43E0-ACF8-D490A6636DE8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5518D4AE-BF4C-494A-BA7C-D2034A254427}
