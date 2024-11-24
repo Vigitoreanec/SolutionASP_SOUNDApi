@@ -8,6 +8,9 @@ public class GroupConfiguration : IEntityTypeConfiguration<Group>
 {
     public void Configure(EntityTypeBuilder<Group> builder)
     {
-        throw new NotImplementedException();
+        builder.HasKey(group => group.Id);
+        builder.HasIndex(group => group.Id).IsUnique();
+        builder.Property(group => group.Title).HasMaxLength(50);
+        builder.Property(group => group.Title).HasMaxLength(2);
     }
 }
