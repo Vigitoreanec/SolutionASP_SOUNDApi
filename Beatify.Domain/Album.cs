@@ -1,4 +1,4 @@
-﻿namespace Beatify.DataBase.Entities;
+﻿namespace Beautify.Domain;
 
 public class Album
 {
