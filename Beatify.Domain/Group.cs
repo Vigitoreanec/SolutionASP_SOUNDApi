@@ -1,4 +1,4 @@
-﻿namespace Beatify.DataBase.Entities;
+﻿namespace Spotify.Domain;
 
 public class Group
 {
