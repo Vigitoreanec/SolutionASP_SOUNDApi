@@ -22,5 +22,6 @@ public class AssemblyMappingProfile : Profile
             var metodInfo = type.GetMethod("Mapping");
             metodInfo?.Invoke(instance, [this]);
         }
+
     }
 }
