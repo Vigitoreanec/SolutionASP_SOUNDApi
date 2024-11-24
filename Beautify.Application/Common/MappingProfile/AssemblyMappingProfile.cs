@@ -18,9 +18,12 @@ public class AssemblyMappingProfile : Profile
 
         foreach (var type in types)
         {
-            var instance = Activator.CreateInstance(type);
+            // экземпляр класса от некоторого типа
+            var instance = Activator.CreateInstance(type); 
+            // получить ссылку от некоторого типа, на метод который будет содержать в себе тип, который будет имплементрировать в себе определенный интерфейс 
             var metodInfo = type.GetMethod("Mapping");
-            metodInfo?.Invoke(instance, [this]);
+            // вызов, Объект, который содержит данный тип и передовать аргумент, через профайл которым мы мапим данные
+            metodInfo?.Invoke(instance, [this]);            
         }
 
     }
