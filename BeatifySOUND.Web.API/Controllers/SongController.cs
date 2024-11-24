@@ -35,7 +35,7 @@ namespace BeatifySOUND.Web.API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status402PaymentRequired)]
-        public async Task<IActionResult> AddGroup(Song song)
+        public async Task<IActionResult> AddGroup([FromForm] Song song)
         {
             if (song == null)
             {
@@ -68,7 +68,7 @@ namespace BeatifySOUND.Web.API.Controllers
         [HttpPut(Name = "UpdateSong")]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<IActionResult> UpdateAsync(int id, Song song)
+        public async Task<IActionResult> UpdateAsync(int id, [FromForm] Song song)
         {
             if (!await songRepository.ExistsByIdAsync(id))
             {

@@ -33,7 +33,7 @@ public class GroupController(IGroupRepository groupRepository) : ControllerBase
     [HttpGet(Name = "GetAllGroups")]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<Group>))]
     
-    public async Task<IActionResult> GetGroups()
+    public async Task<IActionResult> GetAll()
     {
         var group = await groupRepository.GetAllAsync();
         return Ok(group);
@@ -57,7 +57,7 @@ public class GroupController(IGroupRepository groupRepository) : ControllerBase
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status402PaymentRequired)]
-    public async Task<IActionResult> AddGroup(Group group)
+    public async Task<IActionResult> AddGroup([FromForm]Group group)
     {
         if (group == null)
         {
@@ -90,7 +90,7 @@ public class GroupController(IGroupRepository groupRepository) : ControllerBase
     [HttpPut(Name = "UpdateGroup")]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public async Task<IActionResult> UpdateAsync(int id,Group group)
+    public async Task<IActionResult> UpdateAsync(int id,[FromForm]Group group)
     {
         if (!await groupRepository.ExistsByIdAsync(id))
         {

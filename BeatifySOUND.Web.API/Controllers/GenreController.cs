@@ -36,7 +36,7 @@ public class GenreController(IGenreRepository genreRepository) : ControllerBase
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status402PaymentRequired)]
-    public async Task<IActionResult> AddGenre(Genre genre)
+    public async Task<IActionResult> AddGenre([FromForm]Genre genre)
     {
         if (genre == null)
         {
@@ -69,7 +69,7 @@ public class GenreController(IGenreRepository genreRepository) : ControllerBase
     [HttpPut(Name = "UpdateGenre")]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public async Task<IActionResult> UpdateAsync(int id, Genre genre)
+    public async Task<IActionResult> UpdateAsync(int id, [FromForm] Genre genre)
     {
         if (!await genreRepository.ExistsByIdAsync(id))
         {

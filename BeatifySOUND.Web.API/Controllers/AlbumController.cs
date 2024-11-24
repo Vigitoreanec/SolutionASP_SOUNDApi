@@ -34,7 +34,7 @@ public class AlbumController(IAlbumRepository albumRepository) : ControllerBase
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status402PaymentRequired)]
-    public async Task<IActionResult> AddAlbum(Album album)
+    public async Task<IActionResult> AddAlbum([FromForm] Album album)
     {
         if (album == null)
         {
@@ -67,7 +67,7 @@ public class AlbumController(IAlbumRepository albumRepository) : ControllerBase
     [HttpPut(Name = "UpdateAlbum")]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public async Task<IActionResult> UpdateAsync(int id, Album album)
+    public async Task<IActionResult> UpdateAsync(int id, [FromForm] Album album)
     {
         if (!await albumRepository.ExistsByIdAsync(id))
         {
