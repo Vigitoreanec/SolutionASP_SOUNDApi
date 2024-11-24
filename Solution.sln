@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BeatifySOUND.Web.API", "BeatifySOUND.Web.API\BeatifySOUND.Web.API.csproj", "{7D53CFAF-EA24-4129-9E03-6322110E46AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BeautifySOUND.Web.API", "BeatifySOUND.Web.API\BeautifySOUND.Web.API.csproj", "{7D53CFAF-EA24-4129-9E03-6322110E46AE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Beatify.Test.ConsoleApp", "Beatify.Test.ConsoleApp\Beatify.Test.ConsoleApp.csproj", "{EA8BB2C7-E925-40AF-B411-580D419AEA41}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Beatify.Domain", "Beatify.Domain\Beatify.Domain.csproj", "{EF8B543E-BB89-4073-A814-AD6C7A84B954}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Beautify.Domain", "Beatify.Domain\Beautify.Domain.csproj", "{EF8B543E-BB89-4073-A814-AD6C7A84B954}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Beautify.Application", "Beautify.Application\Beautify.Application.csproj", "{4443DB65-B9EB-46EA-B642-26EB95362078}"
 EndProject
