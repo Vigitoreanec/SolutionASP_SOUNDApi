@@ -2,5 +2,5 @@
 
 public class GroupListViewModel
 {
-    public required List<GroupLookupDTO> Groups { get; set; }
+    public required IList<GroupLookupDTO> Groups { get; set; }
 }

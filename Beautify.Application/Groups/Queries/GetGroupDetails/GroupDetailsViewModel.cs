@@ -1,9 +1,10 @@
 ﻿using AutoMapper;
+using Beautify.Application.Common.MappingProfile;
 using Beautify.Domain;
 
 namespace Beautify.Application.Groups.Queries.GetGroupDetails;
 
-public class GroupDetailsViewModel : IMapper<Group>
+public class GroupDetailsViewModel : IMapWith<Group>
 {
     public int Id { get; set; }
     public required string Title { get; set; }

@@ -1,30 +1,40 @@
+using BeautifySOUND.Web.API;
 using Microsoft.EntityFrameworkCore;
 
-var builder = WebApplication.CreateBuilder(args);
 
-// получаем строку подключения из файла конфигурации
+CreateHostBuilder(args).Build().Run();
 
-// добавляем контекст ApplicationContext в качестве сервиса в приложение
+//var builder = WebApplication.CreateBuilder(args);
+
+//// получаем строку подключения из файла конфигурации
+
+//// добавляем контекст ApplicationContext в качестве сервиса в приложение
 
 
-builder.Services.AddControllers();
+//builder.Services.AddControllers();
 
 
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+//builder.Services.AddEndpointsApiExplorer();
+//builder.Services.AddSwaggerGen();
 
-var app = builder.Build();
+//var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+//if (app.Environment.IsDevelopment())
+//{
+//    app.UseSwagger();
+//    app.UseSwaggerUI();
+//}
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
-app.UseAuthorization();
+//app.UseAuthorization();
 
-app.MapControllers();
+//app.MapControllers();
 
-app.Run();
+//app.Run();
+
+
+static IHostBuilder CreateHostBuilder(string[] args) =>
+    Host.CreateDefaultBuilder(args)
+    .ConfigureWebHostDefaults(webBuilder =>
+    webBuilder.UseStartup<Startup>());

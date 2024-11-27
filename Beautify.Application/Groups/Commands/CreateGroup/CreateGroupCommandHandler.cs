@@ -12,6 +12,7 @@ public class CreateGroupCommandHandler(IBeautifyDbContext beautifyDbContext) : I
         {
             Title = request.Title,
             Description = request.Description,
+            
         };
         await beautifyDbContext.Groups.AddAsync(group,cancellationToken);
         await beautifyDbContext.SaveChangesAsync(cancellationToken);
