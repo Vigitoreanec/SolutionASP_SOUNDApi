@@ -1,7 +1,8 @@
 ﻿using Beautify.Application.Interfaces;
+using Beautify.Domain;
 using Beautify.PersistenceDb.EntityTypeConfiguration;
 using Microsoft.EntityFrameworkCore;
-using System.Text.RegularExpressions;
+
 
 namespace Beautify.PersistenceDb;
 

@@ -1,6 +1,6 @@
 ﻿
 using Microsoft.EntityFrameworkCore;
-using System.Text.RegularExpressions;
+using Beautify.Domain;
 
 namespace Beautify.Application.Interfaces;
 

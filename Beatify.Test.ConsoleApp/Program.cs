@@ -40,22 +40,22 @@
 
 
 
-using System.Reflection;
+//using System.Reflection;
 
-// Пример Рефлексии
-var test = new Test();
+                                //->    // Пример Рефлексии
+//var test = new Test();
 
 
-MethodInfo methodInfo = test.GetType().GetMethod("Draw", BindingFlags.Instance | BindingFlags.NonPublic);
-methodInfo.Invoke(test, null);  // -> Console.WriteLine(" Пример Рефлексии");
+//MethodInfo methodInfo = test.GetType().GetMethod("Draw", BindingFlags.Instance | BindingFlags.NonPublic);
+//methodInfo.Invoke(test, null);  // -> Console.WriteLine(" Пример Рефлексии");
 
-//typeof(Class1).GetField("aValue", BindingFlags.Instance | BindingFlags.NonPublic);
-//int a = (int)fieldInfo.GetValue(cls);
+////typeof(Class1).GetField("aValue", BindingFlags.Instance | BindingFlags.NonPublic);
+////int a = (int)fieldInfo.GetValue(cls);
 
-class Test
-{
-    private void Draw()
-    {
-        Console.WriteLine(" Пример Рефлексии");
-    }
-}
+//class Test
+//{
+//    private void Draw()
+//    {
+//        Console.WriteLine(" Пример Рефлексии");
+//    }
+//}
