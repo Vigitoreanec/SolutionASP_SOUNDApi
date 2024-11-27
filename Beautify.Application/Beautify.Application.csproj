@@ -16,8 +16,4 @@
     <ProjectReference Include="..\Beatify.Domain\Beautify.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Groups\Commands\" />
-  </ItemGroup>
-
 </Project>
