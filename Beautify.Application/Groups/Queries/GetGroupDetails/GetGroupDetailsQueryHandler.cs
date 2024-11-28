@@ -13,6 +13,7 @@ public class GetGroupDetailsQueryHandler(IBeautifyDbContext beautifyDbContext, I
     {
         var group = await beautifyDbContext.Groups.FirstOrDefaultAsync(group => group.Id == request.Id, cancellationToken) ??
             throw new NotFoundException(nameof(Group),request.Id);  
+
         return mapper.Map<GroupDetailsViewModel>(group);
     }
 }

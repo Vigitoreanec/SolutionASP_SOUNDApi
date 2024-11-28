@@ -12,7 +12,7 @@ public class GroupDetailsViewModel : IMapWith<Group>
     public void Mapping(Profile profile)
     {
         profile.CreateMap<Group, GroupDetailsViewModel>()
-            .ForMember(groupVM => groupVM.Id, opt => opt.MapFrom(groupVM => groupVM.Id))
+            //.ForMember(groupVM => groupVM.Id, opt => opt.MapFrom(groupVM => groupVM.Id))
             .ForMember(groupVM => groupVM.Title, opt => opt.MapFrom(groupVM => groupVM.Title))
             .ForMember(groupVM => groupVM.Description, opt => opt.MapFrom(groupVM => groupVM.Description));
     }

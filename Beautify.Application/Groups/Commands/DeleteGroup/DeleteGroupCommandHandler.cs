@@ -4,7 +4,7 @@ using Beautify.Application.Interfaces;
 using Beautify.Domain;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using System.Xml;
+
 
 namespace Beautify.Application.Groups.Commands.DeleteGroup;
 

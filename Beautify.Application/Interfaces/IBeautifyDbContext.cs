@@ -1,6 +1,5 @@
-﻿
+﻿using Beautify.Domain;
 using Microsoft.EntityFrameworkCore;
-using Beautify.Domain;
 
 namespace Beautify.Application.Interfaces;
 

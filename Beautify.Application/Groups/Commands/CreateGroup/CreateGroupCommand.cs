@@ -1,5 +1,4 @@
-﻿
-using MediatR;
+﻿using MediatR;
 
 namespace Beautify.Application.Groups.Commands.CreateGroup;
 
