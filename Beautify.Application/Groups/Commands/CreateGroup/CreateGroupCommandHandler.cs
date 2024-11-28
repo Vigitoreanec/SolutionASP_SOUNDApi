@@ -8,7 +8,7 @@ public class CreateGroupCommandHandler(IBeautifyDbContext beautifyDbContext) : I
 {
     public async Task<int> Handle(CreateGroupCommand request, CancellationToken cancellationToken)
     {
-        var group = new Group
+        var group = new GroupNEW
         {
             Title = request.Title,
             Description = request.Description,

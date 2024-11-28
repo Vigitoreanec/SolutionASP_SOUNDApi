@@ -12,7 +12,7 @@ public class UpdateGroupCommandHandler(IBeautifyDbContext beautifyDbContext) : I
     public async Task Handle(UpdateGroupCommand request, CancellationToken cancellationToken)
     {
         var group = await beautifyDbContext.Groups.FirstOrDefaultAsync(group => group.Id == request.Id, cancellationToken)
-            ?? throw new NotFoundException(nameof(Group), request.Id);
+            ?? throw new NotFoundException(nameof(GroupNEW), request.Id);
 
         group.Title = request.Title;
         group.Description = request.Description;

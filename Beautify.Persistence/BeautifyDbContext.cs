@@ -8,7 +8,7 @@ namespace Beautify.PersistenceDb;
 
 public class BeautifyDbContext(DbContextOptions<BeautifyDbContext> options) : DbContext(options), IBeautifyDbContext
 {
-    public DbSet<Group> Groups { get; set; }
+    public DbSet<GroupNEW> Groups { get; set; }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfiguration(new GroupConfiguration());

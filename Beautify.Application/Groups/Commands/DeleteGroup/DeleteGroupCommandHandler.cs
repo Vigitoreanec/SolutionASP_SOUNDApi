@@ -15,7 +15,7 @@ public class DeleteGroupCommandHandler(IBeautifyDbContext beautifyDbContext) : I
         var group = await beautifyDbContext.Groups.FirstOrDefaultAsync(group => group.Id == request.Id, cancellationToken);
         if (group is null)
         {
-            throw new NotFoundException(nameof(Group), request.Id);
+            throw new NotFoundException(nameof(GroupNEW), request.Id);
         }
 
         beautifyDbContext.Groups.Remove(group);

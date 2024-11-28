@@ -13,7 +13,7 @@ public class RepositoryGroupEF(BeautifyDbContext beautifyDbContext, IMapper mapp
     public async Task<GroupDetailsViewModel> GetGroupDetails(GetGroupDetailsQuery request, CancellationToken cancellationToken)
     {
         var group = await beautifyDbContext.Groups.FirstOrDefaultAsync(group => group.Id == request.Id, cancellationToken) ??
-            throw new NotFoundException(nameof(Group), request.Id);
+            throw new NotFoundException(nameof(GroupNEW), request.Id);
 
         return mapper.Map<GroupDetailsViewModel>(group);
     }
