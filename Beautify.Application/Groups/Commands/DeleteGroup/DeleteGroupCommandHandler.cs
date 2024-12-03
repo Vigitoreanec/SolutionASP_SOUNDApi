@@ -12,7 +12,9 @@ public class DeleteGroupCommandHandler(IBeautifyDbContext beautifyDbContext) : I
 {
     public async Task Handle(DeleteGroupCommand request, CancellationToken cancellationToken)
     {
-        var group = await beautifyDbContext.Groups.FirstOrDefaultAsync(group => group.Id == request.Id, cancellationToken);
+        var group = await beautifyDbContext.Groups.FirstOrDefaultAsync(group => 
+        group.Id == request.Id, cancellationToken);
+
         if (group is null)
         {
             throw new NotFoundException(nameof(GroupNEW), request.Id);

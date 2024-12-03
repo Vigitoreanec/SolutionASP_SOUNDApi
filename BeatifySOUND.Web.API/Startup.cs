@@ -1,8 +1,8 @@
-﻿using Beautify.Application;
+﻿using System.Reflection;
+using Beautify.Application;
 using Beautify.Application.Common.MappingProfile;
 using Beautify.Application.Interfaces;
 using Beautify.PersistenceDb;
-using System.Reflection;
 
 namespace BeautifySOUND.Web.API;
 
@@ -38,6 +38,8 @@ public class Startup(IConfiguration configuration)
         {
             app.UseDeveloperExceptionPage();
         }
+
+        //app.UseCustomExceptionHandler();
         app.UseRouting();
         app.UseHttpsRedirection();
         app.UseSwagger();
@@ -45,6 +47,8 @@ public class Startup(IConfiguration configuration)
         app.UseCors("AllowAll");
 
         app.UseEndpoints(endPoints =>
-                    endPoints.MapControllers());
+        {
+            endPoints.MapControllers();
+        });
     }
 }

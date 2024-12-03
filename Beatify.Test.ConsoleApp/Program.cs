@@ -42,7 +42,7 @@
 
 //using System.Reflection;
 
-                                //->    // Пример Рефлексии
+//->    // Пример Рефлексии
 //var test = new Test();
 
 
@@ -59,3 +59,38 @@
 //        Console.WriteLine(" Пример Рефлексии");
 //    }
 //}
+
+
+
+// ======================
+
+using System.Text.Json;
+using System.Text.Json.Serialization;
+
+using var client = new HttpClient();
+using var rezult = await client.GetAsync($"https://localhost:7169/Group/1");
+
+var rez = await rezult.Content.ReadAsStringAsync();
+Person? restoredPerson = JsonSerializer.Deserialize<Person>(rez);
+Console.WriteLine(restoredPerson);
+Console.ReadLine();
+
+class Person
+{
+    [JsonPropertyName("title")]
+    public string? Title { get; }
+
+    [JsonPropertyName("description")]
+    public string? Description { get; }
+    
+    public Person(string title, string description)
+    {
+        Title = title;
+        Description = description;
+    }
+
+    public override string ToString()
+    {
+        return $" Title: {Title}, Description: {Description}";
+    }
+}

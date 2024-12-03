@@ -1,9 +1,15 @@
 using BeautifySOUND.Web.API;
-using Microsoft.EntityFrameworkCore;
 
 
-CreateHostBuilder(args).Build().Run();
 
+var host = CreateHostBuilder(args).Build();
+host.Run();
+static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder.UseStartup<Startup>();
+                });
 //var builder = WebApplication.CreateBuilder(args);
 
 //// получаем строку подключения из файла конфигурации
@@ -34,7 +40,3 @@ CreateHostBuilder(args).Build().Run();
 //app.Run();
 
 
-static IHostBuilder CreateHostBuilder(string[] args) =>
-    Host.CreateDefaultBuilder(args)
-    .ConfigureWebHostDefaults(webBuilder =>
-    webBuilder.UseStartup<Startup>());
