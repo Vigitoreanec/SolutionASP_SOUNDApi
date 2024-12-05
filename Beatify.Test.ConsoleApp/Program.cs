@@ -64,33 +64,81 @@
 
 // ======================
 
+//using System.Text.Json;
+//using System.Text.Json.Serialization;
+
+//using var client = new HttpClient();
+//using var rezult = await client.GetAsync($"https://localhost:7169/Group/1");
+
+//var rez = await rezult.Content.ReadAsStringAsync();
+//Person? restoredPerson = JsonSerializer.Deserialize<Person>(rez);
+//Console.WriteLine(restoredPerson);
+//Console.ReadLine();
+
+//class Person
+//{
+//    [JsonPropertyName("title")]
+//    public string? Title { get; }
+
+//    [JsonPropertyName("description")]
+//    public string? Description { get; }
+
+//    public Person(string title, string description)
+//    {
+//        Title = title;
+//        Description = description;
+//    }
+
+//    public override string ToString()
+//    {
+//        return $" Title: {Title}, Description: {Description}";
+//    }
+//}
+
+
+// -------------------------------------------------
+
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-using var client = new HttpClient();
-using var rezult = await client.GetAsync($"https://localhost:7169/Group/1");
 
-var rez = await rezult.Content.ReadAsStringAsync();
-Person? restoredPerson = JsonSerializer.Deserialize<Person>(rez);
-Console.WriteLine(restoredPerson);
+var groupsHandler = new GroupsHandler();
+var groupsJson = await groupsHandler.GetGroups(0, 2);
+var listSerialize = JsonSerializer.Deserialize<GroupsList>(groupsJson);
+
+foreach(var group in listSerialize.Groups)
+{
+    Console.WriteLine(group.ToString());
+}
 Console.ReadLine();
 
-class Person
+
+
+class GroupsHandler
 {
+    public async Task<string> GetGroups(int countSkip, int countTake)
+    {
+        using var client = new HttpClient();
+        using var rezult = await client
+            .GetAsync($"https://localhost:7169/Groups?countSkipGroups={countSkip}&countTakeGroups={countTake}");
+
+        var groupsJson = await rezult.Content.ReadAsStringAsync();
+        return groupsJson;
+    }
+}
+
+class Group(int id, string title)
+{
+    [JsonPropertyName("id")]
+    public int Id { get; set; } = id;
     [JsonPropertyName("title")]
-    public string? Title { get; }
-
-    [JsonPropertyName("description")]
-    public string? Description { get; }
+    public string Title { get; set; } = title;
+    public override string ToString() =>
+         $"ID: {Id}, Title: {Title}";
     
-    public Person(string title, string description)
-    {
-        Title = title;
-        Description = description;
-    }
-
-    public override string ToString()
-    {
-        return $" Title: {Title}, Description: {Description}";
-    }
+}
+class GroupsList(List<Group> groups)
+{
+    [JsonPropertyName("groups")]
+    public required List<Group> Groups { get; set; } = groups;
 }
