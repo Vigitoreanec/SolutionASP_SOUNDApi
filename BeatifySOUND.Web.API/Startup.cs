@@ -3,12 +3,13 @@ using Beautify.Application;
 using Beautify.Application.Common.MappingProfile;
 using Beautify.Application.Interfaces;
 using Beautify.PersistenceDb;
+using BeautifySOUND.Web.API.Middlewares;
 
 namespace BeautifySOUND.Web.API;
 
 public class Startup(IConfiguration configuration)
 {
-    public void ConfigureService(IServiceCollection services)
+    public void ConfigureServices(IServiceCollection services)
     {
         services.AddAutoMapper(config =>
         {
@@ -39,7 +40,8 @@ public class Startup(IConfiguration configuration)
             app.UseDeveloperExceptionPage();
         }
 
-        //app.UseCustomExceptionHandler();
+        app.UseCustomExceptionHandler();
+        //app.UseMiddleware<CustomUxceptionHandlerMiddleware>();
         app.UseRouting();
         app.UseHttpsRedirection();
         app.UseSwagger();

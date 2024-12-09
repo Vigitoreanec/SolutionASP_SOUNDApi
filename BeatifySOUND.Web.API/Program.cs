@@ -1,7 +1,5 @@
 using BeautifySOUND.Web.API;
 
-
-
 var host = CreateHostBuilder(args).Build();
 host.Run();
 static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -10,6 +8,9 @@ static IHostBuilder CreateHostBuilder(string[] args) =>
                 {
                     webBuilder.UseStartup<Startup>();
                 });
+
+
+
 //var builder = WebApplication.CreateBuilder(args);
 
 //// получаем строку подключения из файла конфигурации
